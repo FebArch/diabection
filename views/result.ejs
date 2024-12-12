@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('./partials/header.ejs') %>
+    <title>Document</title>
+</head>
+
+<body>
+  <%- include('./partials/navbar.ejs') %>
+    <h1>Result</h1>
+
+    <div class="container">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+
+      <% if (locals.data) { %>
+
+        <% data.forEach((document)=> { %>
+          <div class="card col mx-1" style="width: 18rem;">
+            <div class="card-header fs-3">
+              <%= document.username %> Health Stats
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Pregnancy: <%= document.pregnancies %>
+              </li>
+              <li class="list-group-item">Glucose: <%= document.glucose %>
+              </li>
+              <li class="list-group-item">Blood_pressure: <%= document.bp %>
+              </li>
+              <li class="list-group-item">Skin Thickness: <%= document.skinthickness %>
+              </li>
+              <li class="list-group-item">Insulin: <%= document.insulin %>
+              </li>
+              <li class="list-group-item">BMI: <%= document.bmi %>
+              </li>
+              <li class="list-group-item">Diabetes Pedigree Function: <%= document.dpf %>
+              </li>
+              <li class="list-group-item">Age: <%= document.age %>
+              </li>
+            </ul>
+            <div class="card-body">
+              <a href="/prediction" class="card-link">Start Prediction</a>
+            </div>
+          </div>
+          <% }) %>
+            <% } %>
+
+    </div>
+  </div>
+
+    <%- include('./partials/script.ejs') %>
+</body>
+
+</html>
