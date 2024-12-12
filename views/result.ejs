@@ -48,6 +48,37 @@
     </div>
   </div>
 
+
+  <div class="container">
+    <% if (locals.userData) { %>
+      <div class="card col mx-1" style="width: 18rem;">
+        <div class="card-header fs-3">
+          <%= userData.username %> Health Stats
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Pregnancy: <%= userData.pregnancies %>
+          </li>
+          <li class="list-group-item">Glucose: <%= userData.glucose %>
+          </li>
+          <li class="list-group-item">Blood_pressure: <%= userData.bp %>
+          </li>
+          <li class="list-group-item">Skin Thickness: <%= userData.skinthickness %>
+          </li>
+          <li class="list-group-item">Insulin: <%= userData.insulin %>
+          </li>
+          <li class="list-group-item">BMI: <%= userData.bmi %>
+          </li>
+          <li class="list-group-item">Diabetes Pedigree Function: <%= userData.dpf %>
+          </li>
+          <li class="list-group-item">Age: <%= userData.age %>
+          </li>
+        </ul>
+        <div class="card-body">
+          <a href="/prediction" class="card-link">Start Prediction</a>
+        </div>
+    <% } %>
+  </div>
+
     <%- include('./partials/script.ejs') %>
 </body>
 

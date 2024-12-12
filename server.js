@@ -26,13 +26,14 @@ app.get('/', async(req, res)=>{
 
 app.post('/', async(req, res)=>{
 
-    let userData = req.body
+    let data = req.body
 
-    userData = await Health.create(userData)
+    data = await Health.create(data)
+    data = [data]
     // console.log(` Username: ${userData.username}\n Pregnancy: ${userData.pregnancies}\n Glucose: ${userData.glucose}, Blood Pressure: ${userData.bp}\n Skin Thickness: ${userData.skinthickness}\n Insulin: ${userData.insulin}\n BMI: ${userData.bmi}\n DiabetesPedigreeFunction: ${userData.dpf}\n Age: ${userData.age}`)
 
 
-    return res.render('result', {userData})
+    return res.render('result', {data})
 })
 
 app.get('/result', async(req, res)=>{
