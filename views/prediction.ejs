@@ -8,7 +8,10 @@
 
 <body>
   <%- include('./partials/navbar.ejs') %>
-    <h1>Predicting......</h1>
+  <% if (locals.username) { %>
+   
+    <h1>Predicting for <%= username %>......</h1>
+  <% } %>
     
     <%- include('./partials/script.ejs') %>
 </body>

@@ -1,0 +1,74 @@
+<script>
+
+let SP = document.querySelectorAll('.SP')
+SP = Array.from(SP);
+
+SP.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        let usernameFromCard = button.parentElement.parentElement.firstElementChild.textContent
+            .replace(" Health Stats", "")
+            .trim();
+        
+        let usernameForPred = {
+            username: usernameFromCard,
+        };
+
+        console.log("Data being sent:", JSON.stringify(usernameForPred));  // Check data being sent
+
+        fetch('/prediction', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(usernameForPred),
+        })
+        .then((response)=>{
+            return response.text()
+        })
+        .then((html) => {
+            console.log(html)
+            document.body.innerHTML = html;  // Update the body with the new HTML content
+        })
+    });
+});
+
+
+</script>
+
+
+
+
+<!-- <div class="card" id="card1">
+    <h3 class="card-title">Card Title</h3>
+    <p class="card-description">This is the description of the card.</p>
+    <button id="sendButton">Send Card Details</button>
+</div> -->
+
+
+<!-- document.getElementById('sendButton').addEventListener('click', function() {
+    // Extract data from the card
+    const cardTitle = document.querySelector('#card1 .card-title').textContent;
+    const cardDescription = document.querySelector('#card1 .card-description').textContent;
+
+    // Create a request object
+    const cardData = {
+        title: cardTitle,
+        description: cardDescription
+    };
+
+    // Send data in the request using fetch
+    fetch('/your-api-endpoint', {
+        method: 'POST',  // HTTP method, can be GET, POST, etc.
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cardData)  // Send the data in the request body
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    }); 
+});-->

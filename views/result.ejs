@@ -16,7 +16,7 @@
       <% if (locals.data) { %>
 
         <% data.forEach((document)=> { %>
-          <div class="card col mx-1" style="width: 18rem;">
+          <div class="card col mx-1  parent" style="width: 18rem;">
             <div class="card-header fs-3">
               <%= document.username %> Health Stats
             </div>
@@ -39,7 +39,7 @@
               </li>
             </ul>
             <div class="card-body">
-              <a href="/prediction" class="card-link">Start Prediction</a>
+              <button type="submit" class="btn btn-link SP">Start Prediction</button>
             </div>
           </div>
           <% }) %>
@@ -50,6 +50,8 @@
 
   </div>
 
+
+    <%- include('./partials/cardReq.ejs') %>
     <%- include('./partials/script.ejs') %>
 </body>
 
